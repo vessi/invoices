@@ -27,5 +27,5 @@ yarn server:run
 
 ## TODO
 
-[ ] add tests
-[ ] clean up and dry routes
+- [ ] add tests
+- [ ] clean up and dry routes
