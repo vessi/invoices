@@ -1,0 +1,9 @@
+{
+  "name": "invoices",
+  "version": "1.0.0",
+  "description": "Babel backend",
+  "main": "app.js",
+  "author": "Mykhailo Bortnyk",
+  "license": "MIT",
+  "dependencies": {}
+}
