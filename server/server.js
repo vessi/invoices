@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import path from 'path';
 import { json, urlencoded } from 'body-parser';
+import morgan from 'morgan';
 import 'babel-polyfill';
 import { config } from '../package.json';
 import db from './db';
@@ -16,7 +17,8 @@ export default app;
 
 app.set('port', config.port || 8000);
 app.use(json());
-app.use(urlencoded());
+app.use(urlencoded({ extended: true }));
+app.use(morgan('combined'));
 app.use(express.static(publicPath));
 
 const routes = {

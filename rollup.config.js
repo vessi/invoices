@@ -10,7 +10,7 @@ export default {
     file: `dist/${process.env.entry}.js`,
     format: 'cjs'
   },
-  external: [ 'express', 'body-parser', 'http', 'sequelize', 'pluralize', 'path' ],
+  external: [ 'express', 'body-parser', 'http', 'sequelize', 'pluralize', 'path', 'morgan' ],
   plugins: [
     json(),
     resolve(),
