@@ -24,3 +24,8 @@ yarn install --production
 yarn server:seed
 yarn server:run
 ```
+
+## TODO
+
+[ ] add tests
+[ ] clean up and dry routes
