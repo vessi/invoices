@@ -6,10 +6,10 @@
   "author": "Mykhailo Bortnyk",
   "license": "MIT",
   "scripts": {
-    "server:build": "yarn babel -- server -D -d dist",
-    "server:watch": "yarn babel -- server -D -d dist -w",
+    "server:build": "yarn rollup -- -c --environment entry:server && yarn rollup -- -c --environment entry:seed",
+    "server:watch": "yarn rollup -- -c --environment entry:server -w",
     "server:lint": "yarn eslint -- server",
-    "server:run": "node dist",
+    "server:run": "node dist/server",
     "server:seed": "node dist/seed"
   },
   "dependencies": {
@@ -17,7 +17,6 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "http": "^0.0.0",
-    "path": "^0.12.7",
     "pluralize": "^7.0.0",
     "sequelize": "^4.8.0",
     "sqlite3": "^3.1.9"
@@ -25,16 +24,21 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "eslint": "^4.5.0"
+    "eslint": "^4.5.0",
+    "rollup": "^0.49.2",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1"
   },
   "config": {
-    "development": {
-      "databaseFile": "invoices_development.sqlite",
+    "defaults": {
+      "databaseFile": "invoices.sqlite",
       "publicPath": "../public"
-    },
-    "production": {}
+    }
   }
 }

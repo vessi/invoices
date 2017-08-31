@@ -3,15 +3,13 @@ import http from 'http';
 import path from 'path';
 import { json, urlencoded } from 'body-parser';
 import 'babel-polyfill';
-import configuration from '../package.json';
+import { config } from '../package.json';
 import db from './db';
 
-const env = process.env.NODE_ENV || 'development';
-const config = configuration.config[env];
-
-const dbConnection = new db(path.join(__dirname, `../${config.databaseFile || 'invoices.sqlite'}`));
-
-const publicPath = path.join(__dirname, config.publicPath || 'public');
+const defaults = config.defaults;
+const dbFileName = path.join(__dirname, `../${ process.env.DATABASE || defaults.databaseFile }`);
+const dbConnection = new db(dbFileName);
+const publicPath = path.join(__dirname, process.env.PUBLIC_PATH || defaults.publicPath);
 
 const app = express();
 export default app;
