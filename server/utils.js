@@ -3,7 +3,7 @@ const capitalize = (string) => (
 );
 
 const camelize = (string) => (
-  string.replace(/(\_\w)/g, (matches) => (
+  string.replace(/(_\w)/g, (matches) => (
     matches[1].toUpperCase()
   ))
 );

@@ -6,27 +6,35 @@
   "author": "Mykhailo Bortnyk",
   "license": "MIT",
   "scripts": {
-    "build:server": "yarn babel -- server -s -D -d dist",
-    "build:client": "yarn webpack"
+    "server:build": "yarn babel -- server -D -d dist",
+    "server:watch": "yarn babel -- server -D -d dist -w",
+    "server:lint": "yarn eslint -- server",
+    "server:run": "node dist",
+    "server:seed": "node dist/seed"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "http": "^0.0.0",
     "path": "^0.12.7",
     "pluralize": "^7.0.0",
-    "regenerator-runtime": "^0.11.0",
     "sequelize": "^4.8.0",
     "sqlite3": "^3.1.9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1"
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.5.0"
   },
   "config": {
-    "development": {},
+    "development": {
+      "databaseFile": "invoices_development.sqlite",
+      "publicPath": "../public"
+    },
     "production": {}
   }
 }

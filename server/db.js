@@ -1,10 +1,8 @@
 import Sequelize from 'sequelize';
 import { singular } from 'pluralize';
-import regeneratorRuntime from 'regenerator-runtime';
+import 'babel-polyfill';
 import { capitalize, camelize } from './utils';
 import schema from './schema';
-
-let connection = undefined;
 
 class DatabaseConnection {
   constructor(dbFile) {
@@ -16,7 +14,7 @@ class DatabaseConnection {
     this.connection.sync();
   }
   defineModels() {
-    const models = this.models = {};
+    this.models = {};
     for (var table in schema) {
       if (schema.hasOwnProperty(table)) {
         const definition = schema[table];
